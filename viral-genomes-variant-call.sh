@@ -37,7 +37,7 @@ beforevcfname=${i%_fix.sam}.beforevcf
 vcfname=${i%_fix.sam}.vcf
 bam=${i%_fix.sam}.bam
 samtools view -bS $i > $bam
-bcftools mpileup -f $ref 1.bam > $beforevcfname
+bcftools mpileup -f $ref $bam > $beforevcfname
 grep '#' $beforevcfname > $vcfname
 grep 'QS=0,1,0' $beforevcfname >> $vcfname
 rm $beforevcfname $bam $i 
